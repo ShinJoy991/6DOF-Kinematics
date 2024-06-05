@@ -141,7 +141,7 @@ If we have the joint angles 𝜃1, 𝜃2, 𝜃3, 𝜃4, 𝜃5, 𝜃6, we can cal
 position of the end point in its own coordinate system (body), we obtain
 its position in the original global coordinate system (global), the
 4<sup>th</sup> parameter of coordinate is 1 to match 4x4 matrix.
-<p align="center" style="font-size: 1.5em;">
+<p align="center" style="font-size: 2em;">
 <sup>G</sup>r = <sup>G</sup>T<sub>B</sub>.<sup>B</sup>r
 </p>
 <h2><strong>3. Inverse kinematics</strong></h2>
@@ -172,6 +172,7 @@ R_{6}^{0} & d_{6}^{0} \\
 \end{bmatrix}$$
 
 We calculate end-effector base on wrist point
+
 $$\begin{bmatrix}
 x_{c} \\
 y_{c} \\
