@@ -10,7 +10,7 @@
 
 4.  **Forward velocity kinematics**
 
-Note: This post covers a specific aspect of kinematics, mainly focus for
+&emsp;&emsp;Note: This post covers a specific aspect of kinematics, mainly focus for
 my practice robot. Sections 2, 3, and 4 discuss one method for solving
 kinematics problems, but many other methods exist. A 6 degrees of
 freedom (DOF) robot is the most common type due to its full spatial
@@ -24,23 +24,23 @@ First of all, you may want to know this information before process to
 kinematics, it helps you aware of definitions and have a base
 calculation for kinematics.
 
-Robot components: Link, joint, manipulator, twist, end-effector
+&emsp;&emsp;&emsp;&emsp;Robot components: Link, joint, manipulator, twist, end-effector
 
-Degrees of freedom
+&emsp;&emsp;&emsp;&emsp;Degrees of freedom
 
-Rotation about Global Cartesian Axes
+&emsp;&emsp;&emsp;&emsp;Rotation about Global Cartesian Axes
 
-Rotation about Local Cartesian Axes
+&emsp;&emsp;&emsp;&emsp;Rotation about Local Cartesian Axes
 
-Axis-Angle Rotation and Orientation kinematics
+&emsp;&emsp;&emsp;&emsp;Axis-Angle Rotation and Orientation kinematics
 
-Rigid Body Motion
+&emsp;&emsp;&emsp;&emsp;Rigid Body Motion
 
-Homogeneous Transformation
+&emsp;&emsp;&emsp;&emsp;Homogeneous Transformation
 
 <h2><strong>2. Forward kinematics</strong></h2>
 
-Kinematics is a field of science that studies the motion of objects
+&emsp;&emsp;Kinematics is a field of science that studies the motion of objects
 without considering the forces that cause those motions. Within the
 scope of kinematics, researchers focus on the position, velocity,
 acceleration, and higher-order derivatives of position variables (with
@@ -51,7 +51,7 @@ relationship between these motions and the forces and torques that cause
 them forms the subject of dynamics, which examines the velocity and
 acceleration factors in greater depth.
 
-A fundamental problem in the study of mechanical control is forward
+&emsp;&emsp;A fundamental problem in the study of mechanical control is forward
 kinematics. Forward kinematics is the problem of determining the
 position and orientation of all links on a robot, including the
 end-effector, based on the kinematic variables of the given joints. In
@@ -66,7 +66,7 @@ system. Sometimes, this is akin to transforming the representation of
 the actuator's position in ordinary space into a representation in
 Cartesian coordinate space.
 
-The problem of this task can be solved by determining the transformation
+&emsp;&emsp;The problem of this task can be solved by determining the transformation
 matrix $T_{i}$ to describe the kinematic information of joint (i) in the
 base coordinate workspace. The traditional method for constructing
 forward kinematic equations for robot manipulators is to link them using
@@ -74,85 +74,86 @@ the Denavit-Hartenberg notation. Therefore, the forward kinematics
 problem essentially involves the manipulation and establishment of these
 transformation matrices.
 
-Basically, forward kinematics involves determining the final position of
+&emsp;&emsp;Basically, forward kinematics involves determining the final position of
 the robot from its initial position and the rotation angles of its
 joints. By using these inputs, we can calculate the robot's end
 position.
-
+<p align="center">
 <img src="./media/image1.jpeg" style="width:5.05556in;height:2.52778in"
 alt="compas_fab - 3.3. Forward and inverse kinematics" />
-
+</p>
+<p align="center">
 <img src="./media/image2.png" style="width:5.05556in;height:1.87973in"
 alt="Relationship between forward and inverse kinematics. | Download Scientific Diagram" />
-
-The transformation matrix from one coordinate system to another in space
+</p>
+&emsp;&emsp;The transformation matrix from one coordinate system to another in space
 is established as follows, derived from rotations around the x, y, z
 axes, and translations. For a 6-degree-of-freedom robot, we have six
 successive transformation matrices from 1 to 6.
-
+<p align="center">
 <img src="./media/image3.png" style="width:5.22897in;height:1.56944in"
 alt="A close-up of a math problem Description automatically generated" />
-
-Forward kinematics – DH table:
+</p>
+&emsp;&emsp;Forward kinematics – DH table:
 
 **+ Step 1:** Determine the number of joints and the number of links.
 
 **+ Step 2:** Attach the coordinate frames from 0 to n onto the links.
 
-Method for determining the Zi axis: It is the axis around which joint
+&emsp;&emsp;&emsp;&emsp;Method for determining the Zi axis: It is the axis around which joint
 i+1 rotates or along which it translates. (i = 1 to n-1)
 
-Method for determining the Xi axis: The X-axis is typically aligned with
+&emsp;&emsp;&emsp;&emsp;Method for determining the Xi axis: The X-axis is typically aligned with
 the common normal and points from joint i to i+1. If the joint axes
 intersect, X is chosen as the cross product of Zi-1 and Zi.
 
-Method for determining the Yi axis: Determined following the right-hand
+&emsp;&emsp;&emsp;&emsp;Method for determining the Yi axis: Determined following the right-hand
 rule.
 
-**Special cases:**
+&emsp;&emsp;**Special cases:**
 
-If Zi intersects Zi-1, Xi is perpendicular to both Z axes, with
+&emsp;&emsp;&emsp;&emsp;If Zi intersects Zi-1, Xi is perpendicular to both Z axes, with
 direction and position arbitrarily chosen.
 
-If Zi and Zi-1 are parallel, any Xi can be chosen, typically passing
+&emsp;&emsp;&emsp;&emsp;If Zi and Zi-1 are parallel, any Xi can be chosen, typically passing
 through the origin of Zi-1.
 
-If Zi and Zi-1 are not coplanar, Xi points from Zi-1 to Zi in 3D space,
+&emsp;&emsp;&emsp;&emsp;If Zi and Zi-1 are not coplanar, Xi points from Zi-1 to Zi in 3D space,
 forming the coordinate system intersection.
 
 **+ Step 3:** Determine the relationship between two coordinate frames i
 and i-1 and create the Denavit-Hartenberg (DH) table.
-
+<p align="center">
 <img src="./media/image4.png" style="width:2.82029in;height:2.41458in"
 alt="A diagram of a link between two lines Description automatically generated with medium confidence" /><img src="./media/image5.png" style="width:2.75in;height:2.40972in"
 alt="A hand with a cross on it Description automatically generated with medium confidence" />
-
+</p>
 The general transformation matrix 𝑇06​ is obtained by multiplying the
 individual transformation matrices:
-
+<p align="center">
 T06=T01×T12×T23×T34×T45×T56 ​
-
+</p>
 If we have the joint angles 𝜃1, 𝜃2, 𝜃3, 𝜃4, 𝜃5, 𝜃6, we can calculate the
 𝑇06​ matrix as a 4x4 matrix. Then, by substituting the coordinate
 position of the end point in its own coordinate system (body), we obtain
 its position in the original global coordinate system (global), the
 4<sup>th</sup> parameter of coordinate is 1 to match 4x4 matrix.
-
+<p align="center">
 <sup>G</sup>r = <sup>G</sup>T<sub>B</sub>.<sup>B</sup>r
-
+</p>
 <h2><strong>3. Inverse kinematics</strong></h2>
 
 Inverse kinematics is found when we have the initial and final positions
 of the robot in the entire local space, along with the configuration and
 dimensions of the robot. We then determine the appropriate rotation
 angles for the robot to reach the desired position.
-
+<p align="center">
 <img src="./media/image6.png" style="width:3.39583in;height:2.13115in"
 alt="Inverse kinematics - Wikipedia" />
-
+<p align="center">
 <img src="./media/image7.jpeg" style="width:3.12688in;height:1.95139in"
 alt="Inverse kinematics using the Jacobian inverse, part 1 • Najam R. Syed" />
-
+</p>
 With the decoupling method, we consider the joint between the arm and
 the end effector as the wrist. Thus, we have the wrist joint at the
 intersection of the three final axes, dividing the problem into
