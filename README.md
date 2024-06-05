@@ -1,6 +1,6 @@
+<h1 align="center" id="title">6-DOF robotic arm: Kinematics solution</h1>
 
-
-**Contents:**
+<h1><strong>Contents:</strong></h1>
 
 1.  **Knowledge requirements**
 
@@ -18,7 +18,7 @@ control, which robots with fewer DOFs lack. Additionally, a 6-DOF base
 allows for easier implementation of robots with higher DOFs, so the
 definitions and my practice robot will mainly about 6-DOF robot.
 
-**1. Knowledge requirements**
+<h2><strong>1. Knowledge requirements</strong></h2>
 
 First of all, you may want to know this information before process to
 kinematics, it helps you aware of definitions and have a base
@@ -38,7 +38,7 @@ Rigid Body Motion
 
 Homogeneous Transformation
 
-**2. Forward kinematics**
+<h2><strong>2. Forward kinematics</strong></h2>
 
 Kinematics is a field of science that studies the motion of objects
 without considering the forces that cause those motions. Within the
@@ -140,7 +140,7 @@ its position in the original global coordinate system (global), the
 
 <sup>G</sup>r = <sup>G</sup>T<sub>B</sub>.<sup>B</sup>r
 
-**3. Inverse kinematics**
+<h2><strong>3. Inverse kinematics</strong></h2>
 
 Inverse kinematics is found when we have the initial and final positions
 of the robot in the entire local space, along with the configuration and
@@ -221,7 +221,7 @@ $$\theta_{5}^{'}\  = atan2( - \sqrt{q_{23}^{2} + q_{13}^{2}},q_{33})$$
 
 $$\theta_{6}^{'} = atan2( - q_{32}, - q_{31})$$
 
-**4. Forward velocity kinematics**
+<h2><strong style="font-size: 1.5em;">4. Forward velocity kinematics</strong></h2>
 
 > Calculate forward velocity kinematics to determine the velocity of the
 > end point for use in path planning, motion control, sensor
