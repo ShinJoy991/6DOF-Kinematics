@@ -94,33 +94,35 @@ successive transformation matrices from 1 to 6.
 <img src="./media/image3.png" style="width:5.22897in;height:1.56944in"
 alt="A close-up of a math problem Description automatically generated" />
 </p>
-&emsp;&emsp;Forward kinematics – DH table:
+
+Forward kinematics – DH table:
+
 
 **+ Step 1:** Determine the number of joints and the number of links.
 
 **+ Step 2:** Attach the coordinate frames from 0 to n onto the links.
-
-&emsp;&emsp;&emsp;&emsp;Method for determining the Zi axis: It is the axis around which joint
+>
+> &emsp;&emsp;&emsp;&emsp;Method for determining the Zi axis: It is the axis around which joint
 i+1 rotates or along which it translates. (i = 1 to n-1)
-
-&emsp;&emsp;&emsp;&emsp;Method for determining the Xi axis: The X-axis is typically aligned with
+>
+> &emsp;&emsp;&emsp;&emsp;Method for determining the Xi axis: The X-axis is typically aligned with
 the common normal and points from joint i to i+1. If the joint axes
 intersect, X is chosen as the cross product of Zi-1 and Zi.
-
-&emsp;&emsp;&emsp;&emsp;Method for determining the Yi axis: Determined following the right-hand
+>
+> &emsp;&emsp;&emsp;&emsp;Method for determining the Yi axis: Determined following the right-hand
 rule.
-
-&emsp;&emsp;**Special cases:**
-
-&emsp;&emsp;&emsp;&emsp;If Zi intersects Zi-1, Xi is perpendicular to both Z axes, with
+>
+> &emsp;&emsp;**Special cases:**
+>
+> &emsp;&emsp;&emsp;&emsp;If Zi intersects Zi-1, Xi is perpendicular to both Z axes, with
 direction and position arbitrarily chosen.
-
-&emsp;&emsp;&emsp;&emsp;If Zi and Zi-1 are parallel, any Xi can be chosen, typically passing
+>
+> &emsp;&emsp;&emsp;&emsp;If Zi and Zi-1 are parallel, any Xi can be chosen, typically passing
 through the origin of Zi-1.
-
-&emsp;&emsp;&emsp;&emsp;If Zi and Zi-1 are not coplanar, Xi points from Zi-1 to Zi in 3D space,
+>
+> &emsp;&emsp;&emsp;&emsp;If Zi and Zi-1 are not coplanar, Xi points from Zi-1 to Zi in 3D space,
 forming the coordinate system intersection.
-
+>
 **+ Step 3:** Determine the relationship between two coordinate frames i
 and i-1 and create the Denavit-Hartenberg (DH) table.
 <p align="center">
@@ -130,6 +132,7 @@ alt="A hand with a cross on it Description automatically generated with medium c
 </p>
 The general transformation matrix 𝑇06​ is obtained by multiplying the
 individual transformation matrices:
+
 <p align="center">
 T06=T01×T12×T23×T34×T45×T56 ​
 </p>
@@ -138,12 +141,12 @@ If we have the joint angles 𝜃1, 𝜃2, 𝜃3, 𝜃4, 𝜃5, 𝜃6, we can cal
 position of the end point in its own coordinate system (body), we obtain
 its position in the original global coordinate system (global), the
 4<sup>th</sup> parameter of coordinate is 1 to match 4x4 matrix.
-<p align="center">
+<p align="center" style="font-size: 1.5em;">
 <sup>G</sup>r = <sup>G</sup>T<sub>B</sub>.<sup>B</sup>r
 </p>
 <h2><strong>3. Inverse kinematics</strong></h2>
 
-Inverse kinematics is found when we have the initial and final positions
+&emsp;&emsp;Inverse kinematics is found when we have the initial and final positions
 of the robot in the entire local space, along with the configuration and
 dimensions of the robot. We then determine the appropriate rotation
 angles for the robot to reach the desired position.
@@ -154,7 +157,7 @@ alt="Inverse kinematics - Wikipedia" />
 <img src="./media/image7.jpeg" style="width:3.12688in;height:1.95139in"
 alt="Inverse kinematics using the Jacobian inverse, part 1 • Najam R. Syed" />
 </p>
-With the decoupling method, we consider the joint between the arm and
+&emsp;&emsp;With the decoupling method, we consider the joint between the arm and
 the end effector as the wrist. Thus, we have the wrist joint at the
 intersection of the three final axes, dividing the problem into
 positional analysis for the wrist joint and rotation angle from the
@@ -163,12 +166,13 @@ wrist to the end effector.
 Provide the desired general homogeneous matrix, input is the position
 and orientation of end-effector.
 
-$H = \begin{bmatrix}
+$$H = \begin{bmatrix}
 R_{6}^{0} & d_{6}^{0} \\
 0 & 1
-\end{bmatrix}$
+\end{bmatrix}$$
 
-We calculate end-effector base on wrist point $\begin{bmatrix}
+We calculate end-effector base on wrist point
+$$\begin{bmatrix}
 x_{c} \\
 y_{c} \\
 z_{c}
@@ -176,7 +180,7 @@ z_{c}
 O_{x} - d_{6}r_{13} \\
 O_{y} - d_{6}r_{23} \\
 O_{z} - d_{6}r_{33}
-\end{bmatrix}$
+\end{bmatrix}$$
 
 d6 is distance from end-effector to wrist point.
 
@@ -186,7 +190,7 @@ $$R_{6}^{0} = R_{3}^{0}.R_{6}^{3}$$
 
 Then
 
-$$R_{6}^{3} = {{\lbrack R}_{3}^{0}\rbrack}^{- 1}.R_{6}^{0}$$
+$$R_{6}^{3} = {\lbrack \mathrm{R_{3}^{0}\rbrack}^{- 1}}.R_{6}^{0}$$
 
 With $R_{6}^{3}$ we can calculate last three joint angles.
 
@@ -216,7 +220,7 @@ $$\theta_{5}^{'} = \  - \theta_{5}$$
 
 $$\theta_{6}^{'} = \theta_{6} + \pi$$
 
-$$\theta_{4}^{'} = atan2({- q}_{23}, - q_{13})$$
+$$\theta_{4}^{'} = atan2(- q_{23}, - q_{13})$$
 
 $$\theta_{5}^{'}\  = atan2( - \sqrt{q_{23}^{2} + q_{13}^{2}},q_{33})$$
 
