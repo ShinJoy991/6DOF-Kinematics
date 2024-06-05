@@ -277,15 +277,10 @@ $$\theta_{6}^{'} = atan2( - q_{32}, - q_{31})$$
 
 > Calculate the Jacobian matrix, which consists of the position and
 > orientation components
->
-> $$J = \begin{bmatrix}
-> \frac{\partial P_{x}}{\partial\theta_{1}} & \frac{\partial P_{x}}{\partial\theta_{2}} & \frac{\partial P_{x}}{\partial\theta_{1}} & \frac{\partial P_{x}}{\partial\theta_{4}} & \frac{\partial P_{x}}{\partial\theta_{5}} & \frac{\partial P_{x}}{\partial\theta_{6}} \\
-> \frac{\partial P_{y}}{\partial\theta_{1}} & \frac{\partial P_{y}}{\partial\theta_{2}} & \frac{\partial P_{y}}{\partial\theta_{3}} & \frac{\partial P_{y}}{\partial\theta_{4}} & \frac{\partial P_{y}}{\partial\theta_{5}} & \frac{\partial P_{y}}{\partial\theta_{6}} \\
-> \frac{\partial P_{z}}{\partial\theta_{1}} & \frac{\partial P_{z}}{\partial\theta_{2}} & \frac{\partial P_{z}}{\partial\theta_{3}} & \frac{\partial P_{z}}{\partial\theta_{4}} & \frac{\partial P_{z}}{\partial\theta_{5}} & \frac{\partial P_{z}}{\partial\theta_{6}} \\
-> T_{0}^{1}(1,3) & T_{0}^{2}(1,3) & T_{0}^{3}(1,3) & T_{0}^{4}(1,3) & T_{0}^{5}(1,3) & T_{0}^{6}(1,3) \\
-> T_{0}^{1}(2,3) & T_{0}^{2}(1,3) & T_{0}^{3}(2,3) & T_{0}^{4}(2,3) & T_{0}^{5}(2,3) & T_{0}^{6}(2,3) \\
-> T_{0}^{1}(3,3) & T_{0}^{2}(1,3) & T_{0}^{3}(3,3) & T_{0}^{4}(3,3) & T_{0}^{5}(3,3) & T_{0}^{6}(3,3)
-> \end{bmatrix}$$
+><p align="center">
+> <img src="./media/image8.png" style="width:5.0697in;height:2.264in"
+> alt="A number of mathematical equations Description automatically generated with medium confidence" />
+></p>
 
 - Substitute joint angles into the Jacobian:
 
